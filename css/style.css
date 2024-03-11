@@ -11,7 +11,7 @@
 #grid_wrapper_main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 300px 60px 300px minmax(100px, 1fr);
+    grid-template-rows: 300px 60px 280px minmax(100px, 1fr);
     grid-template-areas:
     "tram tram tram"
     "head head head"
@@ -27,12 +27,25 @@
     display: flex;
     flex-direction: column;
     justify-content: top;
-    text-align: center;
+    align-items: center;
     border-radius: 10px;
     margin: 5px;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: whitesmoke;
+    position: relative;
+}
+
+.menu_text {
+    padding: 5px;
+}
+
+.menu_img {
+    height: 38%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
 }
 
 /*-Ids-------------------------------------------------------------------------------------------------------------*/
@@ -62,7 +75,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
 }
 
 #title_why {
@@ -94,12 +106,14 @@ h1 {
     font-family: "Kanit", sans-serif;
     font-weight: 600;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 h2 {
     font-family: "Kanit", sans-serif;
     font-size: 1.1rem;
     color: rgb(70, 70, 70);
+    text-align: center;
 }
 
 p {
