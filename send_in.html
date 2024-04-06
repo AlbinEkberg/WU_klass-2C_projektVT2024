@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div>
+    <div id="grid_wrapper_send_in">
         <header id="title_and_menu">
             <h1>Skicka in</h1>
             <nav>
@@ -25,19 +25,30 @@
             </nav>
         </header>
 
-        <section id="what_stop">
+        <section id="what_stop" class="send_in_square">
             <h2>vilken hållplats</h2>
+            <input type="text" name="wstop">
         </section>
-        <section id="what_tramline">
+        <section id="what_tramline" class="send_in_square">
             <h2>vilken linje?</h2>
+            <input type="text" name="wline">
         </section>
-        <section id="what_time">
+        <section id="what_time" class="send_in_square">
             <h2>vilken tid?</h2>
+            <input type="datetime-local" name="wtime">
         </section>
-        <section id="additional_info">
+        <section id="additional_info" class="send_in_square">
             <h2>mer info?</h2>
+            <input type="text" name="winfo">
+        </section>
+        <div id="submit">
+            <input type="submit" name="submit" onclick="scrollToBottom()">
+        </div>
+        <section id="thank_you">
+            <h2>tack för informationen!</h2>
+            <p>Din hjälp är det som håller sidan vid liv!</p>
         </section>
     </div>
-    <script src="js/hamburger_script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

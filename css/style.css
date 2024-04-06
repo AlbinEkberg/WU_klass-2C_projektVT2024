@@ -11,7 +11,11 @@
     --burgerline_height: 6px;
     --burgerline_margin: 5px;
 
+    --standard_margin: 10px;
+    --standard_border_radius: 10px;
+
     --vasttrafik_blue: rgb(37, 150, 190);
+    --vasttrafik_lightblue: rgb(0, 175, 240);
     --text_gray: rgb(70, 70, 70);
     --background_white: whitesmoke;
     --complementary_orange: rgb(218, 105, 65);
@@ -34,7 +38,7 @@
 #grid_wrapper_hotspots {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 50px 500px 500px;
+    grid-template-rows: 50px auto auto;
     grid-template-areas: 
     "menu"
     "map_"
@@ -45,13 +49,15 @@
 #grid_wrapper_send_in {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 50px 200px 200px 200px 400px;
+    grid-template-rows: 50px auto auto auto auto 40px 300px;
     grid-template-areas:
     "menu"
     "stop"
     "line"
     "time"
     "addi"
+    "subm"
+    "than"
     ;
 }
 
@@ -60,18 +66,19 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 50px 100px 100px 100px 100px 100px 100px 100px;
     grid-template-areas:
+    /*pos as in post*/
     "menu menu"
-    "art1 pic1"
-    "art1 art2"
-    "art3 art2"
-    "art3 art4"
-    "art5 art4"
-    "art5 art6"
-    "pic2 art6"
+    "pos1 pic1"
+    "pos1 pos2"
+    "pos3 pos2"
+    "pos3 pos4"
+    "pos5 pos4"
+    "pos5 pos6"
+    "pic2 pos6"
     ;
 }
 
-/*-Classes---------------------------------------------------------------------------------------------------------*/
+/*-Classes--------------------------------------------------------------------------------------------------------*/
 
 .menu_section {
     overflow: hidden;
@@ -79,8 +86,8 @@
     flex-direction: column;
     justify-content: top;
     align-items: center;
-    border-radius: 10px;
-    margin: 5px;
+    border-radius: var(--standard_border_radius);
+    margin: calc(var(--standard_margin) - 5px);
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: var(--background_white);
@@ -101,6 +108,72 @@
     bottom: 0;
 }
 
+.send_in_square {
+    border-radius: var(--standard_border_radius);
+    background-color: var(--background_white);
+    margin: var(--standard_margin) var(--standard_margin) 0px var(--standard_margin);
+    height: 100px;
+    padding: 0px 10px 10px 10px;
+}
+
+.send_in_square h2 {
+    background-color: var(--complementary_orange);
+    color: var(--background_white);
+    border-radius: var(--standard_border_radius) var(--standard_border_radius) 0px 0px;
+    margin: 0px -10px 0px -10px;
+}
+
+.send_in_square input {
+    width: 100%;
+    height: calc(100% - 40px);
+    border-radius: var(--standard_border_radius);
+    margin-top: 10px;
+    font-family: "Dongle", sans-serif;
+    font-size: 1.6rem;
+}
+
+.feed_posts {
+    background-color: var(--background_white);
+    border-radius: var(--standard_border_radius);
+    padding: 5px;
+}
+
+.feed_posts h2 {
+    background-color: var(--complementary_orange);
+    font-size: 0.9rem;
+    color: var(--background_white);
+    margin: -5px -5px 0px -5px;
+    border-radius: var(--standard_border_radius) var(--standard_border_radius) 0px 0px;
+}
+
+.feed_posts p {
+    margin-top: 5px;
+}
+
+.feed_left {
+    margin: var(--standard_margin) calc(var(--standard_margin)/2) 0px var(--standard_margin);
+}
+
+.feed_right {
+    margin: 0px var(--standard_margin) var(--standard_margin) calc(var(--standard_margin)/2);
+    position: relative;
+    top: 10px;
+}
+
+.feed_pictures {
+    border-radius: var(--standard_border_radius);
+    background-image: url(../img/tram_at_angle.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feed_pictures h2 {
+    width: 100%;
+    background-color: var(--background_white);
+}
+
 .links_visible {
     transform: translateY(450px);
 }
@@ -111,6 +184,7 @@
     margin: var(--burgerline_margin);
     background: var(--background_white);
     transition: all 0.5s;
+    border-radius: 2px;
 }
 
 .burger_in_x_form #burger_line_1 {
@@ -149,12 +223,12 @@
 
 #link_list a {
     color: var(--text_gray);
+    font-family: "Kanit", sans-serif;
     font-weight: bold;
     font-size: 1.25rem;
-    letter-spacing: 0.1875rem;
     text-transform: uppercase;
     width: 150px;
-    height: 3rem;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -192,6 +266,8 @@
 }
 
 #title_why {
+    color: var(--background_white);
+    font-size: 1.4rem;
     background-color: var(--complementary_orange);
     width: 100%;
 }
@@ -203,47 +279,130 @@
 
 #article_map {
     grid-area: map_;
+    background-color: var(--background_white);
+}
+
+#article_map h2, #article_time h2 {
+    background-color: var(--complementary_orange);
+    color: var(--background_white);
+}
+
+#article_map p, #article_time p {
+    color: var(--text_gray);
+    margin: var(--standard_margin);
+}
+
+#article_map img, #article_time img {
+    border-radius: var(--standard_border_radius);
+    margin: var(--standard_margin);
+    width: calc(100% - var(--standard_margin) * 2);
 }
 
 #article_time {
     grid-area: tabl;
+    background-color: var(--background_white);
 }
 
 #what_stop {
     grid-area: stop;
-    background-color: rgb(0, 23, 66);
 }
 
 #what_tramline {
     grid-area: line;
-    background-color: forestgreen;
 }
 
 #what_time {
     grid-area: time;
-    background-color: chartreuse;
 }
 
 #additional_info {
     grid-area: addi;
-    background-color: coral;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+#submit {
+    grid-area: subm;
+    background-color: var(--text_gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submit input {
+    width: 200px;
+    height: 30px;
+    font-family: "Dongle", sans-serif;
+    font-size: 1.6rem;
+    border-radius: var(--standard_border_radius);
+}
+
+#thank_you {
+    grid-area: than;
+    background-image: url(../img/tram_at_angle.jpg);
+    background-size: cover;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#thank_you h2, #thank_you p {
+    background-color: var(--complementary_orange);
+    color: var(--background_white);
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+}
+
+#post_1 {
+    grid-area: pos1;
+}
+
+#post_2 {
+    grid-area: pos2;
+}
+
+#post_3 {
+    grid-area: pos3;
+}
+
+#post_4 {
+    grid-area: pos4;
+}
+
+#post_5 {
+    grid-area: pos5;
+}
+
+#post_6 {
+    grid-area: pos6;
+}
+
+#feed_picture_1 {
+    grid-area: pic1;
+}
+
+#feed_picture_2 {
+    grid-area: pic2;
 }
 
 #title_and_menu {
     grid-area: menu;
     position: sticky;
     top: 0px;
-    display: flex;
-    justify-content: space-between;
     height: 50px;
 }
 
 #title_and_menu h1 {
-    margin-left: 10px;
     width: 100%;
 }
 
-/*-tags--------------------------------------------------*/
+#main_header {
+    background-color: var(--text_gray);
+
+}
+
+/*-tags-----------------------------------------------------------------------------------------------------------*/
 
 body {
     background-color: var(--vasttrafik_blue);
@@ -271,8 +430,9 @@ h1 {
     color: var(--background_white);
     font-family: "Kanit", sans-serif;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     text-align: center;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -280,6 +440,7 @@ h2 {
     font-size: 1.1rem;
     color: var(--text_gray);
     text-align: center;
+    text-transform: uppercase;
 }
 
 p {
@@ -291,4 +452,180 @@ p {
 
 a {
     text-decoration: none;
+}
+
+/*-Computer adaptions---------------------------------------------------------------------------------------------*/
+
+@media screen and (min-width: 700px) {
+
+    * {
+        --standard_margin: 20px;
+    }
+    
+    /*---Wrappers---*/
+
+    #grid_wrapper_main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 300px 60px 400px minmax(100px, 1fr);
+        grid-template-areas:
+        "tram tram tram"
+        "head head head"
+        "sec1 sec2 sec3"
+        "info info info"
+        ;
+    }
+
+    #grid_wrapper_hotspots {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100px auto;
+        grid-template-areas: 
+        "menu menu"
+        "map_ tabl"
+        ;
+    }
+    
+    #grid_wrapper_send_in {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 100px auto auto 80px 500px;
+        grid-template-areas:
+        "menu menu menu"
+        "stop line time"
+        "addi addi addi"
+        "subm subm subm"
+        "than than than"
+        ;
+    }
+    
+    #grid_wrapper_feed {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 100px 200px 200px 200px 200px;
+        grid-template-areas:
+        /*pos as in post*/
+        "menu menu menu"
+        "pos1 pic1 pos2"
+        "pos1 pos3 pos2"
+        "pos4 pos3 pos5"
+        "pos4 pic2 pos5"
+        ;
+    }
+
+    /*---classes---*/
+    
+    .feed_posts h2 {
+        font-size: 1.6rem;
+    }
+
+    .feed_posts p {
+        font-size: 2rem;
+    }
+
+    .feed_pictures h2 {
+        font-size: 1.6rem;
+    }
+
+    .feed_left {
+        margin: calc(var(--standard_margin)/2);
+    }
+    
+    .feed_right {
+        margin: calc(var(--standard_margin)/2);
+        position: relative;
+        top: 0px;
+    }
+
+    .menu_img {
+        height: 75%;
+    }
+
+    .links_visible {
+        transform: translateY(0px);
+    }
+
+    /*---ids---*/
+
+
+    #title_and_menu h1 {
+        font-size: 2rem;
+        position: absolute;
+        background-color: var(--complementary_orange);
+        top: 0px;
+    }
+
+    #additional_info {
+        margin-bottom: var(--standard_margin);
+    }
+
+    #submit input {
+        width: 400px;
+        height: 60px;
+    }
+
+    #thank_you h2, #thank_you p {
+        padding: 10px;
+    }
+
+    #article_map {
+        margin: var(--standard_margin) calc(var(--standard_margin)/2) var(--standard_margin) var(--standard_margin);
+        border-radius: var(--standard_border_radius);
+    }
+
+    #article_map img, #article_time img {
+        object-fit: contain;
+        width: calc(100% - var(--standard_margin) * 2);
+    }
+
+    #article_map h2, #article_time h2 {
+        border-radius: var(--standard_border_radius) var(--standard_border_radius) 0px 0px;
+        font-size: 1.6rem;
+    }
+
+    #article_time {
+        margin: var(--standard_margin) var(--standard_margin) var(--standard_margin) calc(var(--standard_margin)/2);
+        border-radius: var(--standard_border_radius);
+    }
+
+    #post_6 {
+        display: none;
+    }
+
+    #link_list {
+        flex-direction: row;
+        height: 50px;
+        width: 100vw;
+        top: 50px;
+        background-color: var(--text_gray);
+    }
+
+    #link_list a {
+        color: var(--background_white);
+        width: 25vw;
+        height: 52px;
+        margin-bottom: 2px;
+
+    }
+
+    #link_list a:hover {
+        background: var(--background_white);
+        color: var(--text_gray);
+    }
+
+    #burger {
+        display: none;
+    }
+
+    /*---tags---*/
+
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p {
+        font-size: 1.6rem;
+    }
 }
