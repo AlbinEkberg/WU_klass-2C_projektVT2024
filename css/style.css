@@ -18,6 +18,7 @@
     --vasttrafik_lightblue: rgb(0, 175, 240);
     --text_gray: rgb(70, 70, 70);
     --background_white: whitesmoke;
+    --light_gray_background: rgb(220, 220, 220);
     --complementary_orange: rgb(218, 105, 65);
 }
 
@@ -84,7 +85,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: top;
     align-items: center;
     border-radius: var(--standard_border_radius);
     margin: calc(var(--standard_margin) - 5px);
@@ -160,7 +160,7 @@
     top: 10px;
 }
 
-.feed_pictures {
+.feed_send_in_button {
     border-radius: var(--standard_border_radius);
     background-image: url(../img/tram_at_angle.jpg);
     background-size: cover;
@@ -169,7 +169,7 @@
     align-items: center;
 }
 
-.feed_pictures h2 {
+.feed_send_in_button h2 {
     width: 100%;
     background-color: var(--background_white);
 }
@@ -216,7 +216,7 @@
     align-items: center;
     justify-content: space-around;
     list-style: none;
-    background: var(--background_white);
+    background: var(--light_gray_background);
     transition: all 0.5s;
     z-index: -1;
 }
@@ -225,7 +225,7 @@
     color: var(--text_gray);
     font-family: "Kanit", sans-serif;
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
     width: 150px;
     height: 100px;
@@ -263,6 +263,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    background-color: var(--light_gray_background);
 }
 
 #title_why {
@@ -274,7 +276,7 @@
 
 #text_why {
     background-color: var(--background_white);
-    padding: 10px;
+    padding: 15px;
 }
 
 #article_map {
@@ -378,11 +380,11 @@
     grid-area: pos6;
 }
 
-#feed_picture_1 {
+#feed_button_1 {
     grid-area: pic1;
 }
 
-#feed_picture_2 {
+#feed_button_2 {
     grid-area: pic2;
 }
 
@@ -502,7 +504,7 @@ a {
     #grid_wrapper_feed {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 100px 200px 200px 200px 200px;
+        grid-template-rows: 100px 150px 150px 150px 150px;
         grid-template-areas:
         /*pos as in post*/
         "menu menu menu"
@@ -516,14 +518,10 @@ a {
     /*---classes---*/
     
     .feed_posts h2 {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
     }
 
-    .feed_posts p {
-        font-size: 2rem;
-    }
-
-    .feed_pictures h2 {
+    .feed_send_in_button h2 {
         font-size: 1.6rem;
     }
 
@@ -546,13 +544,16 @@ a {
     }
 
     /*---ids---*/
-
-
     #title_and_menu h1 {
         font-size: 2rem;
         position: absolute;
         background-color: var(--complementary_orange);
         top: 0px;
+    }
+
+    #text_why {
+        padding: 50px;
+        width: calc(1.5rem * 20 + 50px * 2);
     }
 
     #additional_info {
@@ -623,6 +624,10 @@ a {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    h2 {
+        font-size: 1.2rem;
     }
 
     p {

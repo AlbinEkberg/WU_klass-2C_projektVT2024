@@ -2,6 +2,7 @@
 const burger = document.getElementById('burger')
 const linkList = document.getElementById('link_list')
 const scrollingElement = (document.scrollingElement || document.body);
+const scrollButton = document.getElementById('submit_button')
 
 function toggleMenu() {
     linkList.classList.toggle('links_visible')
@@ -9,6 +10,8 @@ function toggleMenu() {
 }
 
 burger.addEventListener('click', toggleMenu)
+
+scrollButton.addEventListener('click', scrollToBottom)
 
 function scrollToBottom() {
     scrollingElement.scrollTop = scrollingElement.scrollHeight;
