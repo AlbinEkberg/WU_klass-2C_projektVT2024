@@ -27,10 +27,12 @@
 #grid_wrapper_main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 300px 60px 280px minmax(100px, 1fr);
+    grid-template-rows: 50px 300px 60px auto 280px minmax(100px, 1fr);
     grid-template-areas:
+    "menu menu menu"
     "tram tram tram"
-    "head head head"
+    "titl titl titl"
+    "imai imai imai"
     "sec1 sec2 sec3"
     "info info info"
     ;
@@ -39,9 +41,10 @@
 #grid_wrapper_hotspots {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 50px auto auto;
+    grid-template-rows: 50px auto auto auto;
     grid-template-areas: 
     "menu"
+    "ihot"
     "map_"
     "tabl"
     ;
@@ -50,9 +53,10 @@
 #grid_wrapper_send_in {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 50px auto auto auto auto 40px 300px;
+    grid-template-rows: 50px auto auto auto auto auto 40px 300px;
     grid-template-areas:
     "menu"
+    "isen"
     "stop"
     "line"
     "time"
@@ -65,10 +69,11 @@
 #grid_wrapper_feed {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50px 100px 100px 100px 100px 100px 100px 100px;
+    grid-template-rows: 50px auto 100px 100px 100px 100px 100px 100px 100px;
     grid-template-areas:
     /*pos as in post*/
     "menu menu"
+    "ifee ifee"
     "pos1 pic1"
     "pos1 pos2"
     "pos3 pos2"
@@ -106,6 +111,17 @@
     object-fit: cover;
     position: absolute;
     bottom: 0;
+}
+
+.info_box {
+    background-color: var(--background_white);
+    margin: var(--standard_margin) var(--standard_margin) 0px var(--standard_margin);
+    border-radius: var(--standard_border_radius);
+    padding: var(--standard_margin);
+}
+
+.hotspots_text {
+    height: 6rem;
 }
 
 .send_in_square {
@@ -246,6 +262,10 @@
     overflow: hidden;
 }
 
+#info_main {
+    grid-area: imai;
+}
+
 #alternative_1 {
     grid-area: sec1;
 }
@@ -279,6 +299,11 @@
     padding: 15px;
 }
 
+#info_hotspots {
+    grid-area: ihot;
+    margin-bottom: var(--standard_margin);
+}
+
 #article_map {
     grid-area: map_;
     background-color: var(--background_white);
@@ -303,6 +328,15 @@
 #article_time {
     grid-area: tabl;
     background-color: var(--background_white);
+}
+
+#info_send_in {
+    grid-area: isen;
+}
+
+#info_send_in a {
+    text-decoration: underline;
+    color: blue;
 }
 
 #what_stop {
@@ -356,6 +390,11 @@
     margin: 20px 0px 20px 0px;
 }
 
+#info_feed {
+    grid-area: ifee;
+    margin-bottom: calc(var(--standard_margin)/2);
+}
+
 #post_1 {
     grid-area: pos1;
 }
@@ -401,7 +440,10 @@
 
 #main_header {
     background-color: var(--text_gray);
-
+    grid-area: titl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*-tags-----------------------------------------------------------------------------------------------------------*/
@@ -420,7 +462,6 @@ nav {
 }
 
 header {
-    grid-area: head;
     background-color: var(--text_gray);
     display: flex;
     justify-content: center;
@@ -469,10 +510,12 @@ a {
     #grid_wrapper_main {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 300px 60px 400px minmax(100px, 1fr);
+        grid-template-rows: 100px 300px 60px auto 400px minmax(100px, 1fr);
         grid-template-areas:
+        "menu menu menu"
         "tram tram tram"
-        "head head head"
+        "titl titl titl"
+        "imai imai imai"
         "sec1 sec2 sec3"
         "info info info"
         ;
@@ -481,9 +524,10 @@ a {
     #grid_wrapper_hotspots {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 100px auto;
+        grid-template-rows: 100px auto auto;
         grid-template-areas: 
         "menu menu"
+        "ihot ihot"
         "map_ tabl"
         ;
     }
@@ -491,9 +535,10 @@ a {
     #grid_wrapper_send_in {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 100px auto auto 80px 500px;
+        grid-template-rows: 100px auto auto auto 80px 500px;
         grid-template-areas:
         "menu menu menu"
+        "isen isen isen"
         "stop line time"
         "addi addi addi"
         "subm subm subm"
@@ -504,10 +549,11 @@ a {
     #grid_wrapper_feed {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 100px 150px 150px 150px 150px;
+        grid-template-rows: 100px auto 150px 150px 150px 150px;
         grid-template-areas:
         /*pos as in post*/
         "menu menu menu"
+        "ifee ifee ifee"
         "pos1 pic1 pos2"
         "pos1 pos3 pos2"
         "pos4 pos3 pos5"
@@ -567,6 +613,10 @@ a {
 
     #thank_you h2, #thank_you p {
         padding: 10px;
+    }
+
+    #info_hotspots {
+        margin-bottom: 0;
     }
 
     #article_map {
